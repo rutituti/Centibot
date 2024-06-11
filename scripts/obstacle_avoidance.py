@@ -35,8 +35,8 @@ class ObstacleAvoidance():
             if self.lidar.ranges:
 
                 self.ranges_lenght = len(self.lidar.ranges)
-                self.min_range = int(self.ranges_lenght/2) - 100
-                self.max_range = int(self.ranges_lenght/2) + 100
+                self.min_range = int(self.ranges_lenght/2) - 130
+                self.max_range = int(self.ranges_lenght/2) + 130
                 
                 self.d_closest = min(self.lidar.ranges[self.min_range:self.max_range])
                 self.index = self.lidar.ranges.index(self.d_closest)
@@ -49,11 +49,11 @@ class ObstacleAvoidance():
                 if (self.d_closest < self.turning_d and self.d_closest > self.stop_d ):
                     
                     if (self.d_closest != 'inf'):
-                        self.robot_vel.angular.z = -1.5
+                        self.robot_vel.angular.z = -1.9
                         self.robot_vel.linear.x = 0.0
                 else :
                     self.robot_vel.angular.z = 0.0
-                    self.robot_vel.linear.x = 0.5
+                    self.robot_vel.linear.x = 0.35
                 
 
                 self.pub_cmd_vel.publish(self.robot_vel) # Publish de velocity value to the robot
